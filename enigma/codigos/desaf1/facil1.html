@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="facil1.css">
+  <title>Facil 1</title>
+</head>
+<body>
+  <h1 class="titulo">Escreva a palavra correta</h1>
+  <input id="senha" placeholder="Digite a resposta">
+  <button id="botao">Tem certeza?</button>
+
+  <script>
+    const PUZZLE_ID = 2;
+    document.getElementById("botao").addEventListener("click", async () => {
+      const input = document.getElementById("senha");
+      const senha = input.value.trim();
+
+      if (!senha) return;
+
+      try {
+        const form = new FormData();
+        form.append('puzzle_id', PUZZLE_ID);
+        form.append('answer', senha);
+
+        const res = await fetch('../check_answer.php', {
+          method: 'POST',
+          body: form,
+          credentials: 'same-origin'
+        });
+
+        if (!res.ok) return;
+
+        const data = await res.json();
+
+        if (data.ok) {
+          window.location.href = "facil2.html";
+        }
+        // Se estiver errado, não faz nada
+      } catch (err) {
+        // Erro silencioso
+      }
+    });
+
+    document.getElementById("senha").addEventListener("keydown", (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    console.log("Enter pressionado");
+    document.getElementById("botao").click();
+  }
+    });
+  </script>
+
+  <!-- Lista de palavras -->
+  <p class="preto um">simples de novo</p>
+  <p class="preto dois">sim</p>
+  <p class="preto tres">não</p>
+  <p class="preto quatro">mau</p>
+  <p class="preto cinco">paz</p>
+  <p class="preto seis">rio</p>
+  <p class="preto sete">ver</p>
+  <p class="preto oito">céu</p>
+  <p class="preto nove">boa</p>
+  <p class="preto dez">dia</p>
+  <p class="preto onze">voz</p>
+  <p class="preto doze">mel</p>
+  <p class="preto treze">cor</p>
+  <p class="preto quatorze">lar</p>
+  <p class="preto quinze">sol</p>
+  <p class="preto dezessete">lar</p>
+  <p class="preto dezoito">sol</p>
+  <p class="preto dezenove">mar</p>
+  <p class="preto vinte">fim</p>
+  <p class="branco">facinho</p>
+</body>
+</html>

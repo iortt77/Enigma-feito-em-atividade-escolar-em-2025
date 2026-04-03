@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="facil5.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <table border="1">
+    <tr>
+      <td><p>O que é tão frágil que dizer o seu nome o quebra?</p></td>
+    </tr>
+    <tr>
+      <td><input type="text" id="senha"></td>
+    </tr>
+    <tr>
+      <td><button id="botao">Para Frente!</button></td>
+    </tr>
+  </table>
+
+  <script>
+    const PUZZLE_ID = 5;
+
+    document.getElementById("botao").addEventListener("click", async function () {
+      const input = document.getElementById("senha");
+      const senha = input.value.trim();
+
+      if (!senha) return;
+
+      try {
+        const form = new FormData();
+        form.append('puzzle_id', PUZZLE_ID);
+        form.append('answer', senha);
+
+        const res = await fetch('../check_answer.php', {
+          method: 'POST',
+          body: form,
+          credentials: 'same-origin'
+        });
+
+        if (!res.ok) return;
+
+        const data = await res.json();
+
+        if (data.ok) {
+          window.location.href = "../ultimo.html";
+        }
+        // Se errar, não faz nada
+      } catch (err) {
+        // Se der erro, não faz nada
+      }
+    });
+
+    document.getElementById("senha").addEventListener("keydown", function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        document.getElementById("botao").click();
+      }
+    });
+  </script>
+
+</body>
+
+</html>

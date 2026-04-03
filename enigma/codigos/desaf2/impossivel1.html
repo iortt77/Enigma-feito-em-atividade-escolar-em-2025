@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" type="text/css" href="impossivel1.css" />
+  <title>idiomas</title>
+</head>
+<body>
+  <img src="../palavras aleatorias.png" alt="Mensagem estilizada" /><br />
+  <input type="text" id="senha" />
+  <button id="botao">Clique para começar</button>
+
+  <script>
+    const PUZZLE_ID = 6;
+
+    document.getElementById("botao").addEventListener("click", async function () {
+      let input = document.getElementById("senha");
+      let senha = input.value.trim();
+
+      if (!senha) return;
+
+      try {
+        const form = new FormData();
+        form.append('puzzle_id', PUZZLE_ID);
+        form.append('answer', senha);
+
+        const res = await fetch('../check_answer.php', {
+          method: 'POST',
+          body: form,
+          credentials: 'same-origin'
+        });
+
+        if (!res.ok) return;
+
+        const data = await res.json();
+
+        if (data.ok) {
+        
+          window.location.href = "impossivel2.html";
+        }
+    
+      } catch (err) {
+      }
+    });
+
+    document.getElementById("senha").addEventListener("keydown", function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        document.getElementById("botao").click();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center; /* centro horizontal */
+  align-items: center;     /* centro vertical */
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column; /* empilha o texto e o form */
+  align-items: center;    /* centraliza tudo */
+  max-width: 700px;
+}
+
+.titulo {
+  margin: 0 0 40px 0; /* espaço abaixo do texto */
+  line-height: 1.5;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; /* espaço entre input e botão */
+  width: 100%;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid white;
+  background: black;
+  color: white;
+  border-radius: 5px;
+  width: 60%;
+  text-align: center;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

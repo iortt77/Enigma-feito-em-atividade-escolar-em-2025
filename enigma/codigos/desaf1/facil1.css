@@ -1,0 +1,69 @@
+body {
+  background-color: black;
+  font-family: Arial, sans-serif;
+  position: relative;
+}
+.titulo {
+    color: white;
+    align-self: center;
+}
+.preto {
+    color:white
+}
+.branco {
+    color:black
+}
+.um {
+    position: absolute;
+    right: 50px;
+    bottom: 100px;
+}
+.dois {
+    position: absolute;
+    right: 75px;
+    bottom: 5px;
+}
+body {
+  background-color: black;
+  font-family: Arial, sans-serif;
+  position: relative;
+  height: 100vh;
+  margin: 0;
+}
+
+.titulo {
+  color: white;
+  align-self: center;
+}
+
+.preto {
+  color: white;
+}
+
+.branco {
+    position: absolute;
+  color: black;
+  right: 302px;
+  bottom: 302px;
+}
+
+.um    { position: absolute; right: 584px;  top: 10px; }
+.dois  { position: absolute; right: 60px;  top: 30px; }
+.tres  { position: absolute; right: 709px; top: 50px; }
+.quatro{ position: absolute; right: 390px; top: 70px; }
+.cinco { position: absolute; right: 970px; top: 90px; }
+.seis  { position: absolute; right: 360px; top: 110px; }
+.sete  { position: absolute; right: 99px; top: 130px; }
+.oito  { position: absolute; right: 300px; top: 150px; }
+.nove  { position: absolute; right: 410px; top: 170px; }
+.dez   { position: absolute; right: 800px; top: 190px; }
+.onze  { position: absolute; right: 51px; top: 210px; }
+.doze  { position: absolute; right: 540px; top: 230px; }
+.treze { position: absolute; right: 600px; top: 250px; }
+.catorze { position: absolute; right: 920px; top: 270px; }
+.quinze { position: absolute; right: 410px; top: 290px; }
+.dezesseis { position: absolute; right: 760px; top: 310px; }
+.dezessete { position: absolute; right: 310px; top: 330px; }
+.dezoito { position: absolute; right: 860px; top: 350px; }
+.dezenove { position: absolute; right: 510px; top: 370px; }
+.vinte { position: absolute; right: 960px; top: 390px; }

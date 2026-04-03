@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" href="impossivel3.css" />
+  <title>duvidoConseguir</title>
+  <script src="musica3.js" defer></script>
+</head>
+<body>
+  <p>coloque a senha:</p>
+  <input type="text" id="senha" />
+  <button id="botao">Clique para começar</button>
+  <audio id="musica" src="overlay_equal_volume.wav" loop></audio>
+
+  <script>
+    const PUZZLE_ID = 8;
+
+    document.getElementById("botao").addEventListener("click", async function () {
+      let input = document.getElementById("senha");
+      let senha = input.value.trim();
+      if (!senha) return;
+
+      try {
+        const form = new FormData();
+        form.append('puzzle_id', PUZZLE_ID);
+        form.append('answer', senha);
+
+        const res = await fetch('../check_answer.php', {
+          method: 'POST',
+          body: form,
+          credentials: 'same-origin'
+        });
+
+        if (!res.ok) return;
+
+        const data = await res.json();
+
+        if (data.ok) {
+          // Resposta correta -> redireciona
+          window.location.href = "impossivel4.html";
+        }
+        // Se resposta errada, não faz nada
+      } catch (err) {
+        // Em caso de erro, também não mostra nada
+      }
+    });
+
+    // Enter para submeter
+    document.getElementById("senha").addEventListener("keydown", function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        document.getElementById("botao").click();
+      }
+    });
+  </script>
+</body>
+</html>

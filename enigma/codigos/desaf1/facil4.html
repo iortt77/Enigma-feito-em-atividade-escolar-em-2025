@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="facil4.css">
+  <title>advinhe</title>
+</head>
+
+<body>
+  <h2>Qual será o próximo número?</h2>
+  <input type="text" id="senha">
+  <p id="numero">1</p>
+  <button id="botao">Próximo número</button>
+
+  <script>
+    let contador = 1;
+    let valorAtual = 1;
+   let segredo1 = (((100 - 32) / 4) + (6 * 3) - (25 / 5) + 2 - 7 + (18 / 3) - (8 * 2) + (14 - 6) - 7) / 2;const segredo = (((80 - 16) / 4) + (9 * 3) - (45 / 5) + (6 - 2) - (10 * 2) + (18 / 3) + 1 - 23) / 1;
+    let segredo2 = (((80 - 16) / 4) + (9 * 3) - (45 / 5) + (6 - 2) - (10 * 2) + (18 / 3) + 1 - 23) / 1;
+let segredo3 = (
+  ((120 - 24) / 6) + (5 * 3) - (36 / 6) + (10 - 3) - (8 * 2) + (14 / 2) + 5 - 24
+);
+
+   document.getElementById("botao").addEventListener("click", function () {
+      let input = document.getElementById("senha");
+      let senha = parseInt(input.value);
+      let numero = document.getElementById("numero");
+
+      contador++;
+      if (contador <= segredo1) {
+        if (contador % 2 == 1) {
+          valorAtual += segredo3;
+        } else {
+          valorAtual += segredo2;
+        }
+        numero.textContent = valorAtual;
+        if (senha == valorAtual) {
+          window.location.href = "facil5.html";
+        }
+      } else {
+        alert("Acabou as tentativas, recomeçar");
+        window.location.href = "facil1.html";
+      }
+    });
+  </script>
+
+</body>
+
+</html>

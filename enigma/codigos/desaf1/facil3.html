@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="facil3.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <table border="1">
+    <tr>
+      <td>
+        <p>
+          A1, B2, C3, D4, E5, F6, G7, H8, I9, J10, K11, L12, M13, N14, O15, P16, Q17, R18, S19, T20, U21, V22, W23, X24, Y25, Z26.
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>b,d,h = <input type="text" id="senha"></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button id="botao">Para Frente!</button>
+      </td>
+    </tr>
+  </table>
+
+  <script>
+    const PUZZLE_ID = 4;
+
+    document.getElementById("botao").addEventListener("click", async function () {
+      const input = document.getElementById("senha");
+      const senha = input.value.trim();
+
+      // Se campo estiver vazio, não faz nada (sem alertas)
+      if (!senha) return;
+
+      try {
+        const form = new FormData();
+        form.append('puzzle_id', PUZZLE_ID);
+        form.append('answer', senha);
+
+        const res = await fetch('../check_answer.php', {
+          method: 'POST',
+          body: form,
+          credentials: 'same-origin'
+        });
+
+        if (!res.ok) return;
+
+        const data = await res.json();
+
+        if (data.ok) {
+          // Resposta correta -> redireciona
+          window.location.href = "facil4.html";
+        }
+        // Se a resposta estiver errada, não faz nada
+      } catch (err) {
+        // Em caso de erro, também não mostra nada
+      }
+    });
+
+    // Enter para submeter
+    document.getElementById("senha").addEventListener("keydown", function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        document.getElementById("botao").click();
+      }
+    });
+  </script>
+
+</body>
+
+</html>

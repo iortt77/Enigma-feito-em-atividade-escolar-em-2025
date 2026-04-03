@@ -1,0 +1,41 @@
+body {
+color: white;
+background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  margin: 0;
+}
+table {
+  margin: auto; 
+  border-collapse: collapse; 
+}
+
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+.um    { position: absolute; right: 584px;  top: 10px; }
+.dois  { position: absolute; right: 60px;  top: 30px; }
+.tres  { position: absolute; right: 709px; top: 50px; }
+.quatro{ position: absolute; right: 390px; top: 70px; }
+.cinco { position: absolute; right: 970px; top: 90px; }
+.seis  { position: absolute; right: 360px; top: 110px; }
+.sete  { position: absolute; right: 99px; top: 130px; }
+.oito  { position: absolute; right: 300px; top: 150px; }
+.nove  { position: absolute; right: 410px; top: 170px; }
+.dez   { position: absolute; right: 800px; top: 190px; }
+.onze  { position: absolute; right: 51px; top: 210px; }
+.doze  { position: absolute; right: 540px; top: 230px; }
+.treze { position: absolute; right: 600px; top: 250px; }
+.catorze { position: absolute; right: 925px; top: 270px; }
+.quinze { position: absolute; right: 400px; top: 315px; }
+.dezesseis { position: absolute; right: 800px; top: 400px; }
+.dezessete { position: absolute; right: 310px; top: 330px; }
+.dezoito { position: absolute; right: 860px; top: 350px; }
+.dezenove { position: absolute; right: 510px; top: 370px; }
+.vinte { position: absolute; right: 960px; top: 390px; }
+.preto {
+  color: rgb(0, 0, 0);
+}

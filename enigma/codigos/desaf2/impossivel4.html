@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="icon" type="image/png" href="tijolos.png">
+  <link rel="stylesheet" type="text/css" href="impossivel4.css">
+  <script src="impossivel4.js" defer></script>
+  <audio id="musica" src="essa.wav" loop></audio>
+  <title>pratileira 5</title>
+  </head>
+<body>
+    <h1 class="titulo">alcançará as estrelas?</h1>
+      <input type="text" id="senha" />
+  <button id="botao">continue a subir</button>
+    <script>
+    const PUZZLE_ID = 9;
+
+    document.getElementById("botao").addEventListener("click", async function () {
+      let input = document.getElementById("senha");
+      let senha = input.value.trim();
+      if (!senha) return;
+
+      try {
+        const form = new FormData();
+        form.append('puzzle_id', PUZZLE_ID);
+        form.append('answer', senha);
+
+        const res = await fetch('../check_answer.php', {
+          method: 'POST',
+          body: form,
+          credentials: 'same-origin'
+        });
+
+        if (!res.ok) return;
+
+        const data = await res.json();
+
+        if (data.ok) {
+          // Resposta correta -> redireciona
+          window.location.href = "impossivel5.html";
+        }
+        // Se resposta errada, não faz nada
+      } catch (err) {
+        // Em caso de erro, também não mostra nada
+      }
+    });
+
+    // Enter para submeter
+    document.getElementById("senha").addEventListener("keydown", function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        document.getElementById("botao").click();
+      }
+    });
+  </script>
+  <p class="preto um">volume</p>
+  <p class="preto dois">quantidade</p>
+  <p class="preto tres">de</p>
+  <p class="preto quatro">mau</p>
+  <p class="preto cinco">paz</p>
+  <p class="preto seis">caracteres</p>
+  <p class="preto sete">ver</p>
+  <p class="preto oito">céu</p>
+  <p class="preto nove">boa</p>
+  <p class="preto dez">-</p>
+  <p class="preto onze">voz</p>
+  <p class="preto doze">mel</p>
+  <p class="preto treze">0</p>
+  <p class="preto quatorze">lar</p>
+  <p class="preto quinze">sol</p>
+  <p class="preto dezesseis">amanhã</p>
+  <p class="preto dezessete">lar</p>
+  <p class="preto dezoito">sol</p>
+  <p class="preto dezenove">mar</p>
+  <p class="preto vinte">fim</p>
+</body>
+</html>

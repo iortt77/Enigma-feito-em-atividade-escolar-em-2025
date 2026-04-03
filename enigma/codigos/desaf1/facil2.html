@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="facil2.css">
+  <title>Fácil 2</title>
+</head>
+
+<body>
+  <table border="1">
+    <tr><td><p>Um número que o dobro dele mais 7 é igual a três vezes ele menos 5.</p></td></tr>
+    <tr><td><p>Qual é esse número?</p></td></tr>
+    <tr><td><input type="text" id="n1" placeholder="Digite parte da senha"></td></tr>
+    <tr><td><p>+</p></td></tr>
+    <tr><td><input type="text" id="n2" placeholder="Digite outra parte"></td></tr>
+    <tr><td><button id="botao">Calcular</button></td></tr>
+  </table>
+
+  <script>
+    const PUZZLE_ID = 3;
+
+document.getElementById("botao").addEventListener("click", async function () {
+  const n1 = document.getElementById("n1").value.trim();
+  const n2 = document.getElementById("n2").value.trim();
+
+  if (!n1 || !n2) return;
+
+  // Aqui decida o que enviar para o backend
+  // Por exemplo, soma
+  const senha = Number(n1) + Number(n2);
+
+  console.log("Senha formada:", senha);
+
+  try {
+    const form = new FormData();
+    form.append('puzzle_id', PUZZLE_ID);
+    form.append('answer', senha);
+
+    const res = await fetch('../check_answer.php', {
+      method: 'POST',
+      body: form,
+      credentials: 'same-origin'
+    });
+
+    console.log("Status da resposta:", res.status);
+
+    if (!res.ok) {
+      console.error("Resposta do servidor não OK");
+      return;
+    }
+
+    const data = await res.json();
+
+    console.log("Resposta do servidor:", data);
+
+    if (data.ok) {
+      window.location.href = "facil3.html";
+    } else {
+      console.log("Resposta errada");
+    }
+  } catch (err) {
+    console.error("Erro ao enviar resposta:", err);
+  }
+    });
+  </script>
+</body>
+
+</html>

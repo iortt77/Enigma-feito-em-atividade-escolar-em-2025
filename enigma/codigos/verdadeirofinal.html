@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>o fim chegou</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background-image: url('starry-night-1093721_960_720.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    function entrarTelaCheia() {
+      const elem = document.documentElement;
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.webkitRequestFullscreen) { // Safari
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) { // IE/Edge antigo
+        elem.msRequestFullscreen();
+      }
+      // remove os eventos depois da primeira ativação
+      document.removeEventListener("click", entrarTelaCheia);
+      document.removeEventListener("keydown", entrarTelaCheia);
+    }
+
+    // entra em fullscreen no primeiro clique ou tecla
+    document.addEventListener("click", entrarTelaCheia);
+    document.addEventListener("keydown", entrarTelaCheia);
+  </script>
+</body>
+</html>
